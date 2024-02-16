@@ -1,15 +1,4 @@
-
-def compare_sorting_time(data_generator, size, sorting_function):
-    data = data_generator(size)
-    start_time = get_current_time()
-    sorted_data = sorting_function(data)
-    end_time = get_current_time()
-    return end_time - start_time
-
-current_time_counter = 0
-
-def get_current_time():
-    return current_time_counter
+import time
 
 
 if __name__ == "__main__":
@@ -51,7 +40,7 @@ if __name__ == "__main__":
                 product['category'] = category
                 print(f"Product with ID {product_id} updated")
                 return
-        print(f"Product with ID {product_id} does not exist.")
+        print(f"Product with ID {product_id} doesn't exist.")
 
 
     def delete_product(products, product_id):
@@ -60,7 +49,7 @@ if __name__ == "__main__":
                 del products[i]
                 print(f"Product with ID {product_id} deleted")
                 return
-        print(f"Product with ID {product_id} does not exist.")
+        print(f"Product with ID {product_id} doesn't exist.")
 
 
     def display_products(products):
@@ -73,7 +62,7 @@ if __name__ == "__main__":
         if product:
             print(f"Product ID: {product['product_id']}, Name: {product['name']}, Price: {product['price']}, Category: {product['category']} SEARCHED")
         else:
-            print(f"Product with ID {product_id} does not exist.")
+            print(f"Product with ID {product_id} doesn't exist.")
 
 
     def bubble_sort_by_price(products):
@@ -94,12 +83,10 @@ if __name__ == "__main__":
 
 
     def compare_sorting_time(data_generator, size, sorting_function):
-        global current_time_counter
         data = data_generator(size)
-        start_time = get_current_time()
+        start_time = time.time()
         sorted_data = sorting_function(data)
-        current_time_counter += 100 
-        end_time = get_current_time()
+        end_time = time.time()
         return end_time - start_time
 
 
